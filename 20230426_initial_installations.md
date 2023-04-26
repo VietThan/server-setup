@@ -90,3 +90,31 @@ Choose which by using commad:
 ```bash
 $ sudo update-alternatives --config python3
 ```
+
+Looks like Ubuntu currently doesn't play nice with 3.11 so keeping default to 3.10
+
+### Install pip for python3
+
+```bash
+$ sudo apt install python3-pip
+```
+
+### Install venv
+
+```bash
+$ sudo apt install python3.10-venv
+```
+
+## Install fastapi, slack
+
+```bash
+$ python3 -m pip install fastapi[all]
+$ python3 -m pip install slackclient
+$ python3 -m pip install slackeventsapi
+```
+
+## Install git 
+
+```bash
+$ sudo apt install git
+```
