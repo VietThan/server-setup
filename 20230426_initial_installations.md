@@ -72,3 +72,21 @@ echo "...adding public key to user's authorized_keys"
 su - ${USER} -c "umask 022 ; mkdir .ssh ; echo $SSH_PUBLIC_KEY >> .ssh/authorised_keys"
 ```
 
+## Install python3.11
+
+```bash
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt install python3.11
+```
+
+Add options to `python3`, allowing switch to `python3.11`
+
+```bash
+$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2
+```
+
+Choose which by using commad:
+```bash
+$ sudo update-alternatives --config python3
+```
