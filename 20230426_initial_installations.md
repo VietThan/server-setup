@@ -33,45 +33,6 @@ $ sudo systemctl enable ssh
 $ sudo systemctl start ssh
 ```
 
-## Added new script to add ssh user
-
-```bash
-$ cd ~
-$ mkdir utilities
-$ cd utilities
-$ touch createsshuser.sh
-$ chmod u+x createsshuser.sh
-```
-
-And put in `createsshuser.sh` the following:
-
-```bash
-#!/bin/bash
-
-USER="$1"
-shift
-SSH_PUBLIC_KEY="$*"
-
-PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-echo "password for user '$USER' is '$PASSWORD'"
-echo "also has public key: "
-echo $SSH_PUBLIC_KEY
-
-# create a user with a random password
-adduser ${USER}
-
-echo "...changing password now to '$PASSWORD'"
-echo ${USER}:${PASSWORD} | chpasswd
-
-# add the user to the wheel group so they can sudo
-echo "...adding user to sudo group"
-usermod -a -G sudo ${USER}
-
-# add the ssh public key
-echo "...adding public key to user's authorized_keys"
-su - ${USER} -c "umask 022 ; mkdir .ssh ; echo $SSH_PUBLIC_KEY >> .ssh/authorised_keys"
-```
-
 ## Install python3.11
 
 ```bash

@@ -1,14 +1,16 @@
 # 2023-05-12: Collection of stuff did since last time
 
-## Script to create new user with ssh
-```shell
-$ cd
+## Added new script to create ssh user
+
+```bash
+$ cd ~
 $ mkdir utilities
 $ cd utilities
 $ touch createsshuser.sh
+$ chmod u+x createsshuser.sh
 ```
 
-Contents of `createsshuser.sh`:
+And put in `createsshuser.sh` the following:
 
 ```bash
 #!/bin/bash
@@ -37,7 +39,15 @@ echo "...adding public key to user's authorized_keys"
 su - ${USER} -c "umask 022 ; mkdir .ssh ; echo $SSH_PUBLIC_KEY >> .ssh/authorized_keys"
 ```
 
-Usage example
+Usage example:
+
 ```bash
 $ sudo ~/./utilities/createsshuser.sh nicholasg ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPpCohquTpbMOB6r4juvE869vvZ61f5iLwq0M+KrP7vr564OCMJonDLF/m4csWcrcLi3hRoH9dWmXjvmaRroxnB06Vv1zM74icSUK+4uYajYl25biIPrrYPJCGs1adKVgjyGalQ1YhfzZJ7gT3zeO/2pV4cTCxPONB1GCFyQ9t1y0ruaEffFPoKBSA8+zL8oILQ1Rk9k6xghkPFtc9+ljYBjatLZ86ZUpoaY+u9TowgCeyPSZD57GoJi/hsXHO99Er5ZEaYOh93QzRiBqSXJoSdjXYenHYhnz8qCzOglIyByJtrznBiw3+2zO/8QN0jUU7ysOZibc0mxAUMe7DHxLJUi7+3WFAiPHIN01xYwJmdZX1EtPD+QkPORxxE+TuSgwEPY3s2jMGbO2yw7w8e3Kb2BFSZi5/jwplxne0wpOoaz8qhmRhL0u9ZJiQOdXRlAja7SD1zqDMcGcM9ANWQeQtBSEsBDCBbiCkRiaFJx5ID3Mwngr59pXuvUhqj8RUaRU= nicholas@MacBook-Air.localdomain
+```
+
+## Curl
+Looks like very early on I installed curl
+
+```shell
+$ sudo apt install curl
 ```
